@@ -1,0 +1,201 @@
+[
+    {
+        "title": "01 Introduction to the exercises: Setup and index into a linearized array",
+        "entries":
+        [
+            {
+                "title": "Fill Screen",
+                "description": "Fill the entire buffer with a constant RGBA color #FF0000FF (red)",
+                "file": "fillscreen.html"
+            }
+        ]
+    },
+    {
+        "title": "02 Creating patterns",
+        "entries":
+        [
+            {
+                "title": "Gradient",
+                "description": "Fill the buffer with a gradient from black to white (horizontal)",
+                "file": "gradient.html"
+            },
+            {
+                "title": "Checkerboard",
+                "description": "Create a checkerboard in the buffer by alternating between black and white patches",
+                "file": "checkerboard.html"
+            },
+            {
+                "title": "Simple Circle",
+                "description": "Warm up in thinking about distances",
+                "file": "circleSimple.html"
+            },
+            {
+                "title": "Circle",
+                "description": "Circle with movable center",
+                "file": "circle.html"
+            }
+
+        ]
+    },
+    {
+        "title": "03 Quantisation",
+        "entries":
+        [
+            {
+                "title": "Grayscale",
+                "description": "",
+                "file": "grayscale.html"
+            },
+            {
+                "title": "Quantisation to 4 brightness values",
+                "description": "",
+                "file": "quantisegrayscale.html"
+            },
+            {
+                "title": "Quantisation to 4 values per color channel",
+                "description": "",
+                "file": "quantisecolor.html"
+            },
+            {
+                "title": "Quantisation with intensity sampling",
+                "description": "",
+                "file": "quantisecoloradaptive.html"
+            },
+            {
+                "title": "Gamma correction",
+                "description": "",
+                "file": "gammacorrection.html"
+            }
+        ]
+    },
+    {
+        "title": "04 Lines",
+        "entries":
+        [
+            {
+                "title": "Simple DDA",
+                "description": "Draw a single line with the DDA algorithm",
+                "file": "ddaSimple.html"
+            },
+            {
+                "title": "Simple Bresenham",
+                "description": "Draw a single line with the Bresenham algorithm",
+                "file": "bresenhamSimple.html"
+            },
+            {
+                "title": "DDA",
+                "description": "Draw lines with the DDA algorithm",
+                "file": "dda.html"
+            },
+            {
+                "title": "Bresenham",
+                "description": "Draw lines with the Bresenham algorithm",
+                "file": "bresenham.html"
+            }
+        ]
+    },
+    {
+        "title": "05 Raytracing",
+        "entries":
+        [
+            {
+                "title": "Basic Raytracing",
+                "description": "Raytrace a single sphere",
+                "file": "raytracing.html"
+            },
+            {
+                "title": "Enhanced Raytracing",
+                "description": "Raytrace many spheres",
+                "file": "manyspheres.html"
+            }
+        ]
+    },
+    {
+        "title": "06 Phong",
+        "entries":
+        [
+            {
+                "title": "Basic Lighting",
+                "description": "Introduce lighting in your scene",
+                "file": "phong.html"
+            }
+        ]
+    },
+    {
+        "title": "07 Transformations",
+        "entries":
+        [
+            {
+                "title": "Basic Transformations",
+                "description": "Transform objects with matrices",
+                "file": "matrix.html"
+            }
+        ]
+    },
+    {
+        "title": "08 Scene Graph",
+        "entries":
+        [
+            {
+                "title": "Basic Scene Graphs",
+                "description": "Arrange objects in a hierarchical data structure and render them",
+                "file": "scenegraph.html"
+            }
+        ]
+    },
+    {
+        "title": "09 Rasterization",
+        "entries":
+        [
+            {
+                "title": "WebGL",
+                "description": "Understand rasterisation with WebGL",
+                "file": "rasterisation.html"
+            }
+        ]
+    },
+    {
+        "title": "10 Shading",
+        "entries":
+        [
+            {
+                "title": "Shading and Texturing",
+                "description": "Use Phong lighting and texturing to improve the rendering",
+                "file": "shading.html"
+            }
+        ]
+    },
+    {
+        "title": "11 Perspective",
+        "entries":
+        [
+            {
+                "title": "",
+                "description": "Bring in perspective",
+                "file": "perspective.html"
+            }
+        ]
+    },
+    {
+        "title": "12 Animation",
+        "entries":
+        [
+            {
+                "title": "",
+                "description": "Make it move",
+                "file": "animation.html"
+            }
+        ]
+    },
+    {
+        "title": "13 Quaternions",
+        "entries":
+        [
+            {
+                "title": "",
+                "description": "A different way to express rotations",
+                "file": "quaternions.html"
+            }
+        ]
+    }
+]
