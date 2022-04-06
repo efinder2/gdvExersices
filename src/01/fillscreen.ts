@@ -12,7 +12,10 @@ import { swapBuffers } from './setup-fillscreen';
  * @param height The height of the canvas
  */
 export function fillscreen(data: Uint8ClampedArray, x: number, y: number, width: number, height: number) {
-
-    // TODO: Compute the position of pixel (x, y) in the linearised 'data' array. Each pixel is using 4 bytes in the data array, one each for red, green, blue and alpha.
-    // TODO:  Set the red and alpha component of pixel (x, y) to maximum (255).
+    let index: number = y * width + x;
+    let positionInArray: number = index * 4;
+    data[positionInArray] = 255;
+    data[positionInArray + 1] = 0;
+    data[positionInArray + 2] = 0;
+    data[positionInArray + 3] = 255;
 }
