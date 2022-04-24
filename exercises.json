@@ -27,7 +27,7 @@
             {
                 "title": "Simple Circle",
                 "description": "Warm up in thinking about distances",
-                "file": "circleSimple.html"
+                "file": "circlesimple.html"
             },
             {
                 "title": "Circle",
@@ -43,27 +43,27 @@
         [
             {
                 "title": "Grayscale",
-                "description": "",
+                "description": "Convert an RGB image to brightness values",
                 "file": "grayscale.html"
             },
             {
                 "title": "Quantisation to 4 brightness values",
-                "description": "",
+                "description": "Posterize an RGB image to 4 brightness values",
                 "file": "quantisegrayscale.html"
             },
             {
                 "title": "Quantisation to 4 values per color channel",
-                "description": "",
+                "description": "Posterize an RGB image to 4 brightness values per color channel",
                 "file": "quantisecolor.html"
             },
             {
                 "title": "Quantisation with intensity sampling",
-                "description": "",
+                "description": "Posterize an RGB image to 4 brightness values with intensity sampling",
                 "file": "quantisecoloradaptive.html"
             },
             {
                 "title": "Gamma correction",
-                "description": "",
+                "description": "Perform gamma correction on an image",
                 "file": "gammacorrection.html"
             }
         ]
@@ -75,12 +75,12 @@
             {
                 "title": "Simple DDA",
                 "description": "Draw a single line with the DDA algorithm",
-                "file": "ddaSimple.html"
+                "file": "ddasimple.html"
             },
             {
                 "title": "Simple Bresenham",
                 "description": "Draw a single line with the Bresenham algorithm",
-                "file": "bresenhamSimple.html"
+                "file": "bresenhamsimple.html"
             },
             {
                 "title": "DDA",
