@@ -17,8 +17,8 @@ export function circle(data: Uint8ClampedArray, x: number, y: number, cx: number
     let offset: number = y * width + x;
     let index: number = offset * 4;
 
-    let xCenter: number = width / 2;
-    let yCenter: number = height / 2;
+    let xCenter: number = cx;
+    let yCenter: number = cy;
 
     // trigonomische formel um Abstand zur Mitte zu ermitteln
     // a2 +b2 = c2
