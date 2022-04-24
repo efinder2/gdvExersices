@@ -14,5 +14,24 @@ import { swapBuffers } from './setup-circlesimple';
  */
 export function circleSimple(data: Uint8ClampedArray, x: number, y: number, cx: number, cy: number, width: number, height: number, radius: number) {
 
-    // TODO: Imagine a circle with center (cx, cy) and given radius. Check if pixel (x, y) is inside this circle or not. Set the pixel color accordingly in the pixel array 'data'.
+    let offset: number = y * width + x;
+    let index: number = offset * 4;
+
+    let xCenter: number = width / 2;
+    let yCenter: number = height / 2;
+
+    // trigonomische formel um Abstand zur Mitte zu ermitteln
+    // a2 +b2 = c2
+    let a: number = x - xCenter;
+    let b: number = y - yCenter;
+    let c: number = Math.sqrt(a * a + b * b);
+    let value = 255;
+    if (c <= radius) {
+        value = 0;
+    }
+
+    data[index] = value;
+    data[index + 1] = value;
+    data[index + 2] = value;
+    data[index + 3] = 255;
 }
