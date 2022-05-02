@@ -29,22 +29,9 @@ export function quantisegrayscale(x: number, y: number, source: Uint8ClampedArra
     let poweer = Math.pow(i, 1 / gamma);
     let n = Math.floor(poweer * 4);
 
-    let grayScale = n;
-    switch (n) {
-        case 0:
-            grayScale = 0;
-            break;
-        case 1:
-            grayScale = 85;
-            break;
-        case 2:
-            grayScale = 170
-            break;
-        case 3:
-            grayScale = 255;
-            break;
-        default:
-            throw Error("unerwarteter wert: "+n);
+    let grayScale = n * 85;
+    if (n == 4){
+        grayScale = 255;
     }
 
     target[positionInArray] = grayScale;
