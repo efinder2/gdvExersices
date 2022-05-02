@@ -26,8 +26,6 @@ export function quantiseColor(x: number, y: number, source: Uint8ClampedArray, t
     let b = source[positionInArray + 2];
     let rgb = [r, g, b];
 
-    let value = rgbToXyz(r, g, b);
-
     // grey = floor(I^(1/gamma)*2^n) -> see lecture 02 page 52
     for (let i = 0; i < 3; i++) {
         let gamma = 1;
@@ -35,23 +33,10 @@ export function quantiseColor(x: number, y: number, source: Uint8ClampedArray, t
         let poweer = Math.pow(colorValueInRGB, 1 / gamma);
         let n = Math.floor(poweer * 4);
 
-        let grayScale = n;
-        switch (n) {
-            case 0:
-                grayScale = 0;
-                break;
-            case 1:
-                grayScale = 85;
-                break;
-            case 2:
-                grayScale = 170
-                break;
-            case 3:
-            case 4:
-                grayScale = 255;
-                break;
-            default:
-                throw Error("unerwarteter wert: " + n + "für farbe: " + value[i] + "power :" + poweer);
+        let grayScale
+        grayScale = n * 85
+        if (n == 4){
+            grayScale = 255;
         }
 
         target[positionInArray + i] = grayScale;
