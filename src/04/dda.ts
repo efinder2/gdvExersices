@@ -23,6 +23,13 @@ export function dda(
         data[4 * (width * y + x) + 3] = 255;
     }
 
+    
+    if(pointB[0] < pointA[0])
+    {
+        let pointBuffer: [number, number] = pointA;
+        pointA = pointB;
+        pointB = pointBuffer;
+    }
     setPixel(pointA[0], pointA[1], data, width);
     setPixel(pointB[0], pointB[1], data, width);
 
@@ -32,7 +39,7 @@ export function dda(
     let p2y = Math.round(pointB[1]);
 
     let m: number = (p2y - p1y) / (p2x - p1x);
-    for (let x: number; x < (p2x - p1x); x++) {
+    for (let x: number = 0; x < (p2x - p1x); x++) {
         setPixel(p1x + x, p1y + Math.round(m * x), data, width);
     }
 
