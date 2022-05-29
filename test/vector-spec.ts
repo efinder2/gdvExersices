@@ -104,6 +104,28 @@ describe('Vector', () => {
         expect(v.length).to.equal(5);
     });
 
+    it('normalize returns the correct result', () => {
+        const v = new Vector(0, 4, 3, 0);
+        expect(v).has.property('normalize');
+        let vn = v.normalize();
+        expect(vn.length).to.equal(1);
+        expect(vn.x).to.equal(0);
+        expect(vn.y).to.equal(0.8);
+        expect(vn.z).to.equal(0.6);
+        expect(vn.w).to.equal(0.0);
+    });
+
+    it('normalize changes the vector', () => {
+        const v = new Vector(0, 4, 3, 0);
+        expect(v).has.property('normalize');
+        let vn = v.normalize();
+        expect(v.length).to.equal(1);
+        expect(v.x).to.equal(0);
+        expect(v.y).to.equal(0.8);
+        expect(v.z).to.equal(0.6);
+        expect(v.w).to.equal(0.0);
+    });
+
     it('addition is correct', () => {
         const a = new Vector(1, 2, 3, 1);
         const b = new Vector(1, -2, 0, 0);
