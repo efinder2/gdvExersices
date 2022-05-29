@@ -16,21 +16,22 @@ import Ray from './ray';
  */
 
 export function raytrace(data: Uint8ClampedArray,
-    camera: Camera,
-    sphere: Sphere,
-    x: number, y: number,
-    width: number, height: number) {
+                         camera: Camera,
+                         sphere: Sphere,
+                         x: number, y: number,
+                         width: number, height: number) {
 
     // TODO: Create a ray from the camera's position through the pixel
     // TODO: (x, y) in the camera's image plane, and perform intersection
     // TODO: with the given sphere. Set color of pixel (x, y) in the data
     // TODO: array to black, if the ray hits the sphere.
-    const ray = Ray.makeRay(x, y, camera);
-    if (sphere.intersect(ray)) {
-        data[(x+y*width * 4+1) * 4+0] = 0;
-        data[(x+y*width * 4+1) * 4+1] = 50;
-        data[(x+y*width * 4+1) * 4+2] = 0;
-        data[(x+y*width * 4+1) * 4+3] = 255;
+    const ray = Ray.makeRay(x,y,camera);
+    let posInArray: number = (x+y*width)*4;
+    if(sphere.intersect(ray)){
+        data[posInArray+0]=0;
+        data[posInArray+1]=0;
+        data[posInArray+2]=50;
+        data[posInArray+3]=255;
     }
 
-}
+                         }

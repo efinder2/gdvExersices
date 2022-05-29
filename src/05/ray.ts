@@ -18,7 +18,7 @@ export default class Ray {
 
         this.origin = origin;
         this.direction = direction;
-    }
+     }
 
     /**
      * Creates a ray from the camera through the image plane.
@@ -33,15 +33,13 @@ export default class Ray {
         // TODO: on the image plane. In addition to the coordinates (x, y), you will need the
         // TODO: width and height of the camera (i.e. the width and height of the camera's
         // TODO: image plane), and the angle alpha specifying the camera's field of view.
-
-        let direction: Vector;
-        let xD: number = x - (camera.width - 1) / 2;
-        let yD: number = (camera.height - 1) / 2 - y;
-        let zD: number = - (camera.width / 2) / Math.tan(camera.alpha / 2);
-        direction = new Vector(xD, yD, zD, 0).sub(camera.origin).normalize();
-
-
-        return new Ray(camera.origin, direction.normalize());
-
+        
+        let vec = new Vector(x - ((camera.width-1)/2), ((camera.height-1)/2) - y,
+        -(camera.width/2)/Math.tan(camera.alpha/2), 0)
+        .sub(camera.origin).normalize();
+        //x - ((camera.width-1)/2);
+        //((camera.height-1)/2) - y;
+        let ray = new Ray(camera.origin, vec);
+        return ray;
     }
 }
