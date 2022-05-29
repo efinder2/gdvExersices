@@ -202,7 +202,7 @@ export default class Vector {
     cross(other: Vector): Vector {
         // TODO: Return new vector with result
         // TODO: The fourth component should be set to 0
-        return new Vector(other.x * this.x, other.y * this.y, other.z * this.z, other.w * this.w);
+        return new Vector(this.y * other.z - this.z * other.y, this.z * other.x - this.x * other.z, this.x * other.y - this.y * other.x, 0);
     }
 
     /**
