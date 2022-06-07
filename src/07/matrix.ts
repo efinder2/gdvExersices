@@ -65,8 +65,12 @@ export default class Matrix {
      */
     static translation(translation: Vector): Matrix {
 
+        let x: Matrix = Matrix.identity();
+        x.setVal(0, 3, translation.x);
+        x.setVal(1, 3, translation.y);
+        x.setVal(2, 3, translation.z);
         // TODO: Return a new Matrix that is translated according to the given Vector
-        return Matrix.identity();
+        return x;
     }
 
     /**
@@ -76,13 +80,32 @@ export default class Matrix {
      * @return The resulting rotation matrix
      */
     static rotation(axis: Vector, angle: number): Matrix {
+        let x = Matrix.identity();
+        if (axis.x == 1) {
+            x.setVal(1, 1, Math.cos(angle));
+            x.setVal(1, 2, -Math.sin(angle));
+            x.setVal(2, 1, Math.sin(angle));
+            x.setVal(2, 2, Math.cos(angle));
+        }
+        if (axis.y == 1) {
+            x.setVal(0, 0, Math.cos(angle));
+            x.setVal(0, 2, Math.sin(angle));
+            x.setVal(2, 0, -Math.sin(angle));
+            x.setVal(2, 2, Math.cos(angle));
+        }
+        if (axis.z == 1) {
+            x.setVal(0, 0, Math.cos(angle));
+            x.setVal(0, 1, -Math.sin(angle));
+            x.setVal(1, 0, Math.sin(angle));
+            x.setVal(1, 1, Math.cos(angle));
+        }
 
         // TODO: Return a new rotation matrix, distinguish the different
         // TODO: axis of rotation. You can use the axis vector
         // TODO: (1, 0, 0, 0) to specify the x-axis
         // TODO: (0, 1, 0, 0) to specify the y-axis
         // TODO: (0, 0, 1, 0) to specify the z-axis
-        return Matrix.identity();
+        return x;
     }
 
     /**
@@ -91,8 +114,13 @@ export default class Matrix {
      * @return The resulting scaling matrix
      */
     static scaling(scale: Vector): Matrix {
+        let x: Matrix = Matrix.identity();
+        x.setVal(0, 0, scale.x);
+        x.setVal(1, 1, scale.y);
+        x.setVal(2, 2, scale.z);
+
         // TODO: Return a new scaling Matrix with the scaling components of the Vector scale
-        return Matrix.identity();
+        return x;
     }
 
 
@@ -115,8 +143,19 @@ export default class Matrix {
      * @return The result of the multiplication this*other
      */
     mul(other: Matrix): Matrix {
+        let mat: Matrix = Matrix.identity();
+        for (let i = 0; i < 4; i++) {
+            for (let j = 0; j < 4; j++) {
+                let sum = 0;
+                for (let k = 0; k < 4; k++) {
+                    sum += this.getVal(i, k) * other.getVal(k, j);
+                }
+                mat.setVal(i, j, sum);
+            }
+        }
+
         // TODO: Return a new Matrix mat with mat = this * other
-        return Matrix.identity();
+        return mat;
     }
 
     /**
@@ -126,7 +165,13 @@ export default class Matrix {
      */
     mulVec(other: Vector): Vector {
         // TODO: Return a new Vector vec with vec = this * other
-        return new Vector(0, 0, 0, 0);
+        let result: Vector = new Vector(0, 0, 0, 0);
+        for (let i = 0; i < 4; i++) {
+            for (let j = 0; j < 4; j++) {
+                result.data[i] += this.getVal(i, j) * other.data[j];
+            }
+        }
+        return result;
     }
 
     /**
@@ -185,10 +230,10 @@ export default class Matrix {
     print() {
         for (let row = 0; row < 4; row++) {
             console.log("> " + this.getVal(row, 0) +
-                        "\t" + this.getVal(row, 1) +
-                        "\t" + this.getVal(row, 2) +
-                        "\t" + this.getVal(row, 3)
-                       );
+                "\t" + this.getVal(row, 1) +
+                "\t" + this.getVal(row, 2) +
+                "\t" + this.getVal(row, 3)
+            );
         }
     }
 }
