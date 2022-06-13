@@ -18,13 +18,34 @@ import { phong } from './phong';
  * @param height The height of the canvas
  */
 export function raytracePhong(data: Uint8ClampedArray,
-                              camera: Camera,
-                              spheres: Array<Sphere>,
-                              lightPositions: Array<Vector>,
-                              shininess: number,
-                              x: number, y: number,
-                              width: number, height: number) {
+    camera: Camera,
+    spheres: Array<Sphere>,
+    lightPositions: Array<Vector>,
+    shininess: number,
+    x: number, y: number,
+    width: number, height: number) {
 
+    let sizeOfLeastT = 0;
+    spheres.forEach((sphere, index, array) => {
+
+        let ray: Ray = Ray.makeRay(x, y, camera);
+        let intersection: Intersection = sphere.intersect(ray);
+        if (intersection == null) {
+            return;
+        }
+
+        if (intersection.t < sizeOfLeastT || sizeOfLeastT == 0) {
+            var color = phong(sphere.color, intersection, lightPositions, shininess, camera.origin)
+            sizeOfLeastT = intersection.t;
+            let index: number = y * width + x;
+            let positionInArray: number = index * 4;
+            data[positionInArray] =  color.x*255;
+            data[positionInArray + 1] = color.y * 255;
+            data[positionInArray + 2] = color.z * 255;
+            data[positionInArray + 3] = color.w * 255;
+
+        }
+    });
     // TODO: Create ray from camera through image plane at position (x, y).
     // TODO: Compute closest intersection with spheres in the scene.
     // TODO: Compute emission at point of intersection using phong model.

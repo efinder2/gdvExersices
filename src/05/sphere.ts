@@ -25,7 +25,7 @@ export default class Sphere {
         this.center = center;
         this.radius = radius;
         this.color = color;
-     }
+    }
 
     /**
      * Calculates the intersection of the sphere with the given ray
@@ -46,47 +46,47 @@ export default class Sphere {
         // TODO: the ray.
         const xZero = ray.origin.sub(this.center); //ray origin - spehere center
         const b = xZero.dot(ray.direction);
-        const c = b*b - xZero.dot(xZero)+this.radius*this.radius;
+        const c = b * b - xZero.dot(xZero) + this.radius * this.radius;
 
 
-        if(c<0) return null;
-        else if(c==0){
+        if (c < 0) return null;
+        else if (c == 0) {
             const t = -b;
             const point = ray.origin.add(ray.direction.mul(t));
             return new Intersection(t, point, point.sub(this.center).normalize());
         } else {
-            const t1 = -b+Math.sqrt(c);
-            const t2 = -b-Math.sqrt(c);
-            const t = Math.min(t1,t2);
+            const t1 = -b + Math.sqrt(c);
+            const t2 = -b - Math.sqrt(c);
+            const t = Math.min(t1, t2);
             const point = ray.origin.add(ray.direction.mul(t));
             return new Intersection(t, point, point.sub(this.center).normalize());
         }
-    
-
-/*
-        let direction, radius;
-        let vec = new Vector(0,0,0,0)
-
-        let x0 = ray.origin;
-        vec.dot(ray.direction)
-        let t12 = -x0*ray
-
-        let c = Math.sqrt(Math.pow((t12*-1),2)-Math.pow(x0,2)+Math.pow(radius,2));
-
-        if(c < 0){
-            return null;
-        } else if(c > 0){
-            //?
-        } else{
-            // c==0 case
-        }
 
 
-
-
-
-        if(1)
-        return null;
-        */
+        /*
+                let direction, radius;
+                let vec = new Vector(0,0,0,0)
+        
+                let x0 = ray.origin;
+                vec.dot(ray.direction)
+                let t12 = -x0*ray
+        
+                let c = Math.sqrt(Math.pow((t12*-1),2)-Math.pow(x0,2)+Math.pow(radius,2));
+        
+                if(c < 0){
+                    return null;
+                } else if(c > 0){
+                    //?
+                } else{
+                    // c==0 case
+                }
+        
+        
+        
+        
+        
+                if(1)
+                return null;
+                */
     }
 }

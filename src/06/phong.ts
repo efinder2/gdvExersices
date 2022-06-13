@@ -18,10 +18,23 @@ export function phong(
     cameraPosition: Vector
 ): Vector {
 
-    const lightColor = new Vector(0.8, 0.8, 0.8, 0);
+    const lightColor = new Vector(0.8, 0.8, 0.8, 1);
     const kA = 1.0;
     const kD = 0.5;
     const kS = 0.5;
+
+    color = color.mul(kA);
+    for(let i = 0; i < lightPositions.length; i++){
+        const n = intersection.normal;
+        const s = lightPositions[i].sub(intersection.point).normalize();
+        const diffuse = lightColor.mul(Math.max(0, n.dot(s))*kD);
+        const v = cameraPosition.sub(intersection.point).normalize();
+        const l = s;
+        const r = n.mul(n.dot(l)*2).sub(l);
+        const specular = lightColor.mul(Math.pow(Math.max(0, r.dot(v)), shininess)*kS);
+        color = color.add(diffuse);
+        color = color.add(specular);
+    }
 
     // TODO: Compute light intensity according to phong reflection model.
     // TODO: Compute diffuse lighting using light color, diffuse
